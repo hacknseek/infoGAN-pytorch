@@ -188,7 +188,7 @@ class Trainer:
 
           z = torch.cat([torch.Tensor(one_hot), fix_noise], 1).view(-1, self.size_latent, 1, 1).cuda()
           x_save = self.G(z)
-          save_image(x_save.data, './tmp/c1_{}_{}.png'.format(epoch+1, num_iters), nrow=10)
+          save_image(x_save.data, './tmp/c1_{}.png'.format(epoch+1), nrow=10)
 
           # con_c.data.copy_(fix_noise)
           # # z = torch.cat([noise, dis_c, con_c], 1).view(-1, 74, 1, 1)
@@ -197,4 +197,4 @@ class Trainer:
           # save_image(x_save.data, './tmp/c2.png', nrow=10)
 
           # save model
-          torch.save(self.G.state_dict(), './save_model/md-{}-{}.ckpt'.format(epoch+1, num_iters))
+          torch.save(self.G.state_dict(), './save_model/md-{}.ckpt'.format(epoch+1))
